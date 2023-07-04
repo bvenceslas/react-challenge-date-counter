@@ -2,3 +2,15 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.date-ui {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.context {
+  width: 150px;
+}
