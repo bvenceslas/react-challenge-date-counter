@@ -44,8 +44,8 @@ const DateCounter = () => {
           {count === 0
             ? "Today is "
             : count > 0
-            ? `${count} Days before Today is `
-            : `${Math.abs(count)} Days From Today is `}
+            ? `${count} days from Today is `
+            : `${Math.abs(count)} days ago was `}
         </span>
 
         <span>{date.toDateString()}</span>
