@@ -12,20 +12,13 @@ export default function App() {
 const DateCounter = () => {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
-  const [date, setDate] = useState(new Date().toLocaleDateString());
+  // const [date, setDate] = useState(new Date());
 
-  const handleAddStep = (context) => {
-    setStep((s) => s + 1);
-  };
+  const date = new Date();
+  date.setDate(date.getDate() + count);
 
   const handleAddCount = () => {
     setCount((c) => c + step);
-    // let dateCount = Date.parse(date);
-    setDate((d) => new Date(Date.parse(d) + 3).toLocaleString());
-  };
-
-  const handleReduceStep = () => {
-    setStep((s) => s - 1);
   };
 
   const handleReduceCount = () => {
@@ -36,9 +29,9 @@ const DateCounter = () => {
     <div>
       <h1>Date Counter</h1>
       <div className="date-ui">
-        <button onClick={handleReduceStep}>-</button>
+        <button onClick={() => setStep((s) => s - 1)}>-</button>
         <span className="context">Step: {step}</span>
-        <button onClick={handleAddStep}>+</button>
+        <button onClick={() => setStep((s) => s + 1)}>+</button>
       </div>
       <div className="date-ui">
         <button onClick={handleReduceCount}>-</button>
@@ -46,7 +39,17 @@ const DateCounter = () => {
         <button onClick={handleAddCount}>+</button>
       </div>
 
-      <p>Today is {date}</p>
+      <p>
+        <span>
+          {count === 0
+            ? "Today is "
+            : count > 0
+            ? `${count} Days before Today is `
+            : `${Math.abs(count)} Days From Today is `}
+        </span>
+
+        <span>{date.toDateString()}</span>
+      </p>
     </div>
   );
 };
