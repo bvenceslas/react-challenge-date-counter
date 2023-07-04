@@ -12,6 +12,7 @@ export default function App() {
 const DateCounter = () => {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
+  const [date, setDate] = useState(new Date().toLocaleDateString());
 
   const handleAddStep = (context) => {
     setStep((s) => s + 1);
@@ -19,6 +20,8 @@ const DateCounter = () => {
 
   const handleAddCount = () => {
     setCount((c) => c + step);
+    // let dateCount = Date.parse(date);
+    setDate((d) => new Date(Date.parse(d) + 3).toLocaleString());
   };
 
   const handleReduceStep = () => {
@@ -43,7 +46,7 @@ const DateCounter = () => {
         <button onClick={handleAddCount}>+</button>
       </div>
 
-      <p>{new Date().toLocaleDateString()}</p>
+      <p>Today is {date}</p>
     </div>
   );
 };
